@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxpKInm28DgC0iNAQtw0PTwxMx7YTrMJTb8OL2e9F253S7Wg-1SxcA0xzGw-6wiDyOWRA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzhe6bsdrRcOb14t719yys-enjuVT7J_i_4HGLan9uDZW31sBHBH9e0bv9NpRC6lZyVyg/exec";
 const MAX_CUPOS = 15;
 
 // Referencias a elementos
