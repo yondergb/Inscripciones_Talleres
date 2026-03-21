@@ -1,53 +1,77 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxpKInm28DgC0iNAQtw0PTwxMx7YTrMJTb8OL2e9F253S7Wg-1SxcA0xzGw-6wiDyOWRA/exec";
+const API_URL = "PEGA_AQUI_TU_URL";
 const MAX_CUPOS = 15;
 
+// Referencias a elementos
 const form = document.getElementById("formulario");
 const contador = document.getElementById("contador");
 const mensaje = document.getElementById("mensaje");
 
+const nombresInput = document.getElementById("nombres");
+const apellidosInput = document.getElementById("apellidos");
+const cedulaInput = document.getElementById("cedula");
+const telefonoInput = document.getElementById("telefono");
+const fechaInput = document.getElementById("fechaNacimiento");
+
+// Evento submit
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const data = {
-    nombres: nombres.value,
-    apellidos: apellidos.value,
-    cedula: cedula.value,
-    telefono: telefono.value,
-    fechaNacimiento: fechaNacimiento.value
-  };
+  try {
+    const data = {
+      nombres: nombresInput.value.trim(),
+      apellidos: apellidosInput.value.trim(),
+      cedula: cedulaInput.value.trim(),
+      telefono: telefonoInput.value.trim(),
+      fechaNacimiento: fechaInput.value
+    };
 
-  const inscritos = await obtener();
+    const inscritos = await obtener();
 
-  if (inscritos.length >= MAX_CUPOS) {
-    mensaje.innerText = "No hay cupos disponibles";
-    return;
+    if (inscritos.length >= MAX_CUPOS) {
+      mensaje.innerText = "No hay cupos disponibles";
+      return;
+    }
+
+    await fetch(API_URL + "?action=add", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+
+    mensaje.innerText = "Inscripción exitosa";
+    form.reset();
+
+    await actualizar();
+
+  } catch (error) {
+    console.error("Error:", error);
+    mensaje.innerText = "Error al registrar";
   }
-
-  await fetch(API_URL + "?action=add", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
-
-  mensaje.innerText = "Inscripción exitosa";
-  form.reset();
-  actualizar();
 });
 
+// Obtener datos
 async function obtener() {
   const res = await fetch(API_URL + "?action=get");
   return await res.json();
 }
 
+// Actualizar contador
 async function actualizar() {
-  const inscritos = await obtener();
-  const disponibles = MAX_CUPOS - inscritos.length;
+  try {
+    const inscritos = await obtener();
+    const disponibles = MAX_CUPOS - inscritos.length;
 
-  contador.innerText = `Cupos disponibles: ${disponibles} / ${MAX_CUPOS}`;
+    contador.innerText = `Cupos disponibles: ${disponibles} / ${MAX_CUPOS}`;
 
-  if (disponibles <= 0) {
-    form.style.display = "none";
-    mensaje.innerText = "No hay cupos disponibles";
+    if (disponibles <= 0) {
+      form.style.display = "none";
+      mensaje.innerText = "No hay cupos disponibles";
+    }
+
+  } catch (error) {
+    console.error("Error al cargar contador:", error);
+    contador.innerText = "Error al cargar datos";
   }
 }
 
+// Ejecutar al cargar
 actualizar();
