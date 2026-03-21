@@ -2,13 +2,24 @@ const API_URL = "https://script.google.com/macros/s/AKfycbw3JfI8-lOMVY-thW-pDv_X
 let datos = [];
 
 function login() {
-  if (user.value === "admin" && pass.value === "12345") {
-    loginBox.style.display = "none";
-    panel.style.display = "block";
+  const usuario = document.getElementById("user").value;
+  const clave = document.getElementById("pass").value;
+
+  if (usuario === "admin" && clave === "12345") {
+    sessionStorage.setItem("adminAuth", "true");
+
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+
     cargar();
   } else {
     alert("Credenciales incorrectas");
   }
+}
+
+function logout() {
+  sessionStorage.removeItem("adminAuth");
+  window.location.href = "index.html";
 }
 
 async function cargar() {

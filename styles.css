@@ -12,6 +12,24 @@ body {
   text-align: center;
 }
 
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.btn-admin {
+  padding: 8px 12px;
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.btn-admin:hover {
+  background: #2563eb;
+}
+
 .contador {
   font-size: 20px;
   margin-bottom: 10px;
@@ -44,6 +62,14 @@ button {
 
 button:hover {
   background: #16a34a;
+}
+
+.btn-logout {
+  background: #ef4444;
+}
+
+.btn-logout:hover {
+  background: #dc2626;
 }
 
 table {

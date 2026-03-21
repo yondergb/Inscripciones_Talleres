@@ -3,28 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscripción Taller</title>
+  <title>Administrador</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<!-- 🔐 PROTECCIÓN -->
+<script>
+if (!sessionStorage.getItem("adminAuth")) {
+  window.location.href = "index.html";
+}
+</script>
+
 <div class="container">
-  <h1>Taller de Excel Básico</h1>
 
-  <div id="contador" class="contador"></div>
-  <div id="mensaje" class="mensaje"></div>
+  <div id="loginBox">
+    <h2>Acceso Administrador</h2>
+    <input type="text" id="user" placeholder="Usuario">
+    <input type="password" id="pass" placeholder="Contraseña">
+    <button onclick="login()">Entrar</button>
+  </div>
 
-  <form id="formulario">
-    <input type="text" id="nombres" placeholder="Nombres" required>
-    <input type="text" id="apellidos" placeholder="Apellidos" required>
-    <input type="text" id="cedula" placeholder="Cédula" required>
-    <input type="text" id="telefono" placeholder="Teléfono" required>
-    <input type="date" id="fechaNacimiento" required>
+  <div id="panel" style="display:none;">
+    <h2>Panel de Inscritos</h2>
 
-    <button type="submit">Inscribirse</button>
-  </form>
+    <button onclick="logout()" class="btn-logout">Cerrar sesión</button>
+
+    <input type="text" id="buscar" placeholder="Buscar..." onkeyup="filtrar()">
+    <button onclick="descargar()">Descargar CSV</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Cédula</th>
+          <th>Teléfono</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tabla"></tbody>
+    </table>
+  </div>
+
 </div>
 
-<script src="script.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>
