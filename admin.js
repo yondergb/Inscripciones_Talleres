@@ -1,6 +1,21 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbw3JfI8-lOMVY-thW-pDv_XV76JwClahT5kcxen5UKXQ1PNMTgu253LGkbyuOkpOBsDbQ/exec";
+const API_URL = "PEGA_AQUI_TU_URL";
 let datos = [];
 
+// 🔐 CONTROL DE ACCESO AL CARGAR
+window.addEventListener("DOMContentLoaded", () => {
+  const auth = sessionStorage.getItem("adminAuth");
+
+  if (auth === "true") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+    cargar();
+  } else {
+    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("panel").style.display = "none";
+  }
+});
+
+// 🔑 LOGIN
 function login() {
   const usuario = document.getElementById("user").value;
   const clave = document.getElementById("pass").value;
@@ -17,18 +32,22 @@ function login() {
   }
 }
 
+// 🚪 LOGOUT
 function logout() {
   sessionStorage.removeItem("adminAuth");
   window.location.href = "index.html";
 }
 
+// 📥 CARGAR DATOS
 async function cargar() {
   const res = await fetch(API_URL + "?action=get");
   datos = await res.json();
   render(datos);
 }
 
+// 🎨 RENDER TABLA
 function render(data) {
+  const tabla = document.getElementById("tabla");
   tabla.innerHTML = "";
 
   data.forEach(d => {
@@ -44,6 +63,7 @@ function render(data) {
   });
 }
 
+// ❌ ELIMINAR
 async function eliminar(id) {
   if (!confirm("¿Eliminar registro?")) return;
 
@@ -55,8 +75,9 @@ async function eliminar(id) {
   cargar();
 }
 
+// 🔍 FILTRAR
 function filtrar() {
-  const texto = buscar.value.toLowerCase();
+  const texto = document.getElementById("buscar").value.toLowerCase();
 
   const filtrados = datos.filter(d =>
     d.Nombres.toLowerCase().includes(texto) ||
@@ -67,6 +88,7 @@ function filtrar() {
   render(filtrados);
 }
 
+// 📥 DESCARGAR CSV
 function descargar() {
   let csv = "Nombres,Apellidos,Cedula,Telefono\n";
 
