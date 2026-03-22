@@ -1,4 +1,4 @@
-const API_URL = "PEGA_AQUI_TU_URL";
+const API_URL = "https://script.google.com/macros/s/AKfycbw3JfI8-lOMVY-thW-pDv_XV76JwClahT5kcxen5UKXQ1PNMTgu253LGkbyuOkpOBsDbQ/exec";
 let datos = [];
 
 // 🔐 CONTROL DE ACCESO AL CARGAR
