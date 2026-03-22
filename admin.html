@@ -8,15 +8,9 @@
 </head>
 <body>
 
-<!-- 🔐 PROTECCIÓN -->
-<script>
-if (!sessionStorage.getItem("adminAuth")) {
-  window.location.href = "index.html";
-}
-</script>
-
 <div class="container">
 
+  <!-- LOGIN -->
   <div id="loginBox">
     <h2>Acceso Administrador</h2>
     <input type="text" id="user" placeholder="Usuario">
@@ -24,6 +18,7 @@ if (!sessionStorage.getItem("adminAuth")) {
     <button onclick="login()">Entrar</button>
   </div>
 
+  <!-- PANEL -->
   <div id="panel" style="display:none;">
     <h2>Panel de Inscritos</h2>
 
