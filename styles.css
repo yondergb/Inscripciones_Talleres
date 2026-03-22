@@ -5,6 +5,17 @@ body {
   margin: 0;
 }
 
+.img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo{
+  width: 50%;
+  height: 50%;
+}
 .container {
   max-width: 500px;
   margin: auto;
@@ -38,11 +49,12 @@ body {
 
 .mensaje {
   margin: 10px;
-  color: #f87171;
+  color: #f11707;
+  font-size: 16px;
 }
 
 input {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   margin: 6px 0;
   border-radius: 8px;
@@ -51,13 +63,27 @@ input {
 
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
+  padding: 10px;
+  margin: 10px 0;
   background: #22c55e;
   border: none;
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  font-size: 150%;  
+}
+
+.btn-eliminar{
+font-size: 100%;
+background: yellow;
+color:red;
+cursor: pointer;
+}
+
+.btn-eliminar:hover{
+background: red;
+color:white;
+cursor: pointer;
 }
 
 button:hover {

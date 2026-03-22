@@ -35,7 +35,11 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify(data)
     });
 
-    mensaje.innerText = "Inscripción exitosa";
+    Swal.fire({
+      title: "¡Exito!?",
+      text: "¡Inscripción exitosa!",
+      icon: "success"
+    });
     form.reset();
     actualizar();
 

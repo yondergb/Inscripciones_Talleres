@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscripción Taller</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,14 +21,19 @@
   <div id="mensaje" class="mensaje"></div>
 
   <form id="formulario">
-    <input type="text" id="nombres" placeholder="Nombres" required>
-    <input type="text" id="apellidos" placeholder="Apellidos" required>
-    <input type="text" id="cedula" placeholder="Cédula" required>
-    <input type="text" id="telefono" placeholder="Teléfono" required>
+    <input type="text" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"title="Solo se permiten letras y espacios" id="nombres" placeholder="Nombres" required>
+    <input type="text" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"title="Solo se permiten letras y espacios" id="apellidos" placeholder="Apellidos" required>
+    <input type="text" pattern="[0-9]*" title="Por favor, ingrese solo números" id="cedula" placeholder="Cédula" required>
+    <input type="text" pattern="[0-9]*" title="Por favor, ingrese solo números" id="telefono" placeholder="Teléfono" required>
     <input type="date" id="fechaNacimiento" placeholder="Fecha Nacimiento" required>
 
-    <button type="submit">Inscribirse</button>
+    <button type="submit"
+>Inscribirse</button>
   </form>
+  <div class="img">
+      <img id="logo" src="https://i.ibb.co/Z6gtJdS7/Logo-SD.jpg" alt="">
+      <p>Sala Digital José de San Martín</p>
+  </div>
 
 </div>
 

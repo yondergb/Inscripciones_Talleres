@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administrador</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -20,11 +21,11 @@
 
   <!-- PANEL -->
   <div id="panel" style="display:none;">
-    <h2>Panel de Inscritos</h2>
+    <h2>Panel de Administración</h2>
 
     <button onclick="logout()" class="btn-logout">Cerrar sesión</button>
 
-    <input type="text" id="buscar" placeholder="Buscar..." onkeyup="filtrar()">
+    <!-- <input type="text" id="buscar" placeholder="Buscar..." onkeyup="filtrar()"> -->
     <button onclick="descargar()">Descargar CSV</button>
 
     <table>

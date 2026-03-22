@@ -57,7 +57,7 @@ function render(data) {
         <td>${d.Apellidos}</td>
         <td>${d.Cédula}</td>
         <td>${d.Teléfono}</td>
-        <td><button onclick="eliminar('${d.ID}')">Eliminar</button></td>
+        <td><button class="btn-eliminar" onclick="eliminar('${d.ID}')">Eliminar</button></td>
       </tr>
     `;
   });
@@ -66,12 +66,18 @@ function render(data) {
 // ❌ ELIMINAR
 async function eliminar(id) {
   if (!confirm("¿Eliminar registro?")) return;
-
+  
   await fetch(API_URL + "?action=delete", {
     method: "POST",
     body: JSON.stringify({ id })
   });
-
+  
+  await Swal.fire({
+    title: "¡Exito!?",
+    text: "Registro Eliminado",
+    icon: "success",
+    showConfirmButton: true
+  });  
   cargar();
 }
 
