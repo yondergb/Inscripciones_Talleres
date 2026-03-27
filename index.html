@@ -12,27 +12,28 @@
 <div class="container">
 
   <div class="top-bar">
-    <a href="admin.html" class="btn-admin">Administrador</a>
+    <span>® Yonder Gil 2026</span>
+    <a href="admin.html" class="btn-admin">Login</a>
   </div>
-
-  <h1>Taller de Excel Básico</h1>
-
-  <div id="contador" class="contador"></div>
-  <div id="mensaje" class="mensaje"></div>
-
+  
+    <h2>Sistema de Inscripción Talleres</h2>
+    <div id="contador" class="contador"></div>
+    <div id="mensaje" class="mensaje"></div>
+  
   <form id="formulario">
     <input type="text" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"title="Solo se permiten letras y espacios" id="nombres" placeholder="Nombres" required>
     <input type="text" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"title="Solo se permiten letras y espacios" id="apellidos" placeholder="Apellidos" required>
     <input type="text" pattern="[0-9]*" title="Por favor, ingrese solo números" id="cedula" placeholder="Cédula" required>
     <input type="text" pattern="[0-9]*" title="Por favor, ingrese solo números" id="telefono" placeholder="Teléfono" required>
-    <input type="date" id="fechaNacimiento" placeholder="Fecha Nacimiento" required>
+    <input type="date" id="fechaNacimiento" required>
+    <label id="fechaNacimiento">Fecha de Nacimiento</label>
 
-    <button type="submit"
->Inscribirse</button>
+    <button id="inscribirse" type="submit"
+>    Inscribirse</button>
   </form>
   <div class="img">
       <img id="logo" src="https://i.ibb.co/Z6gtJdS7/Logo-SD.jpg" alt="">
-      <p>Sala Digital José de San Martín</p>
+      <h1>Sala Digital <br> José de San Martín</h1>   
   </div>
 
 </div>

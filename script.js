@@ -14,6 +14,9 @@ const fechaInput = document.getElementById("fechaNacimiento");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  const boton = document.getElementById('inscribirse');
+  boton.style.display = 'none';
+
   try {
     const data = {
       nombres: nombresInput.value.trim(),
@@ -40,6 +43,10 @@ form.addEventListener("submit", async (e) => {
       text: "¡Inscripción exitosa!",
       icon: "success"
     });
+
+    const boton = document.getElementById('inscribirse');
+    boton.style.display = 'block';
+
     form.reset();
     actualizar();
 
